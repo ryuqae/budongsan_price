@@ -29,19 +29,6 @@ logger.addHandler(fileHandler)
 
 logger.info("Start of program")
 
-# params = {
-#     "serviceKey": KEY,
-#     "pnu": "1111010200",
-#     "stdrYear": "2022",
-#     "format": "xml",
-#     "numOfRows": "100",
-#     "pageNo": "4",
-# }
-
-# response = requests.get(url, params=params)
-# soup = bs(response.text, features="xml")
-# numRows = int(soup.find("totalCount").text)
-
 
 class InstallCPS:
     def __init__(self, KEY):
@@ -88,4 +75,3 @@ if __name__ == "__main__":
         df = installCPS.get_page(pnu=code, pageNo=1, year=2022)
         df.to_csv(f"output/{name}.csv", encoding="utf-8-sig")
         logger.info(msg=f"{name} - {df.shape}")
-        # logger.info(msg=f"{df.head()}")
